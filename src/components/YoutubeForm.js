@@ -1,5 +1,8 @@
 import { useFormik } from "formik";
 import React from "react";
+const onSubmit = (values) => {
+  console.log("Form data", values);
+};
 const YoutubeForm = () => {
   const formik = useFormik({
     initialValues: {
@@ -7,13 +10,13 @@ const YoutubeForm = () => {
       email: "",
       channel: "",
     },
+    onSubmit,
   });
 
-  console.log(formik.values);
 
   return (
     <div>
-      <form>
+      <form onSubmit={formik.handleSubmit}>
         <label htmlFor="name">Name</label>
         <input
           type="text"
